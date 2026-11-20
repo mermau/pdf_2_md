@@ -1,6 +1,6 @@
 # PDF2MD — applicazione desktop per convertire PDF in Markdown
 
-Data: 2026-11-20 · Stato: bozza da approvare
+Data: 2026-11-20 · Stato: in approvazione
 
 ## 1. Intento e perché
 
@@ -10,7 +10,8 @@ estratto in Markdown** fa risparmiare token. PDF2MD è un'app desktop, con inter
 converte i PDF in `.md` usando la libreria **markitdown** (versione 0.1.9 allegata, codice Microsoft, licenza MIT)
 e permette di aggiornare markitdown quando escono nuove release.
 
-Utenti: il docente proponente e i colleghi, in gran parte non tecnici. Sistemi: **Windows e macOS**.
+Utenti: il docente proponente e i colleghi, in gran parte non tecnici. Sistemi: **Windows 11** e **macOS su Mac con chip Apple**
+(arm64; nessun Mac Intel da supportare).
 
 ## 2. Obiettivi, non-obiettivi, anti-obiettivi
 
@@ -168,8 +169,10 @@ In futuro un'implementazione basata su API (es. Claude) potrà essere attivata d
 ## 7. Distribuzione
 
 - Build con **PyInstaller** (modalità cartella; su macOS bundle `.app`), Python 3.12.
+- Piattaforme target: Windows 11 x64, macOS arm64 (nessuna build Intel/universal2).
 - **GitHub Actions** sul repository `mermau/pdf_2_md`: job su `windows-latest` e `macos-latest` che eseguono i test,
-  costruiscono l'app e la allegano come artefatto/Release (`PDF2MD-windows.zip`, `PDF2MD-macos.zip` o `.dmg`).
+  costruiscono l'app; il **push di un tag `vX.Y.Z`** pubblica una GitHub Release con `PDF2MD-windows.zip` e
+  `PDF2MD-macos.zip`/`.dmg`. Il repository è **pubblico**: i colleghi scaricano dalla pagina Releases senza account.
 - App non firmata: nel README istruzioni in italiano, con figure, per superare SmartScreen ("Ulteriori informazioni →
   Esegui comunque") e Gatekeeper (tasto destro → Apri).
 - README per l'utente finale in italiano: scaricare, aprire, usare, aggiornare.
